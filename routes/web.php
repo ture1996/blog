@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Post;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/posts', function(){
+    $posts = Post::published();
+    return view('posts', compact('posts'));
+});
+
+Route::get('/posts/{id}', function($id) {
+    $post = Post::find($id);
+    return view('post', compact('post'));
+})->name('single-post');

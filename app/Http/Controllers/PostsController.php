@@ -11,13 +11,13 @@ class PostsController extends Controller
 
         $posts = Post::published();
 
-        return view('posts', compact('posts'));
+        return view('posts.index', compact('posts'));
 
     }
 
     public function show($id){
         $post = Post::find($id);
 
-        return view('post', compact('post'));
+        return view('posts.show', compact('post'));
     }
 }

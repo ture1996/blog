@@ -12,6 +12,22 @@
     </div><!-- /.blog-post -->
 
     <div>
+        <h4>Leave a comment:</h4>
+        <form method = "POST" action = "/posts/{{ $post->id }}/comments">
+            @csrf
+            <div class="mb-3">
+                <input type="text"  name = "body" class="form-control" id="exampleFormControlInput1" >
+            </div>
+
+    @error('body')
+        @include('partials.error')
+    @enderror
+
+            <button type="submit">Send comment</button>
+        </form>
+    </div>
+
+    <div>
         <h4>Comments</h4>
 
         <ul>

@@ -9,6 +9,8 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['title', 'body'];
+
     public static function published(){
         return self::where('published', 1)->get();
     }

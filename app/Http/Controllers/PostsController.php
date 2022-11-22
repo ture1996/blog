@@ -9,7 +9,7 @@ class PostsController extends Controller
 {
     public function index(){
 
-        $posts = Post::published();
+        $posts = Post::all();
 
         return view('posts.index', compact('posts'));
 
@@ -20,4 +20,22 @@ class PostsController extends Controller
 
         return view('posts.show', compact('post'));
     }
+
+    public function create(){
+
+        return view('posts.create');
+
+    }
+
+    public function store(){
+
+        Post::create([
+            'title' => request('title'), 
+            'body' => request('body')
+        ]);
+
+        return redirect('/posts');
+
+    }
+
 }

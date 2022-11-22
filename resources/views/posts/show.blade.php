@@ -11,4 +11,17 @@
             <p>{{ $post->body }}</p>
     </div><!-- /.blog-post -->
 
+    <div>
+        <h4>Comments</h4>
+
+        <ul>
+            @foreach($post->comments as $comment)
+                <li>
+                    {{$comment->body}}
+                </li>
+            @endforeach
+        </ul>
+
+    </div>
+
 @endsection

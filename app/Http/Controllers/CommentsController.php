@@ -9,6 +9,11 @@ use App\Http\Requests\StoreCommentRequest;
 
 class CommentsController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function store(StoreCommentRequest $request, $id){
 
         $validated = $request->validated();

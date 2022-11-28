@@ -7,6 +7,11 @@ use App\Models\Post;
 
 class PostsController extends Controller
 {
+    
+    public function __construct(){
+        $this->middleware('auth', ['except' => 'index']);
+    }
+
     public function index(){
 
         $posts = Post::all();
@@ -38,7 +43,8 @@ class PostsController extends Controller
 
         Post::create([
             'title' => request('title'),
-            'body' => request('body')
+            'body' => request('body'),
+            'user_id' => auth()->id()
         ]);
 
         return redirect('/posts');

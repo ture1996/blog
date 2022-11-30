@@ -9,6 +9,7 @@ class RegisterController extends Controller
 {
     public function __construct(){
         $this->middleware('guest');
+        $this->middleware('check.age')->only('store');
     }
 
     public function create(){
@@ -33,6 +34,8 @@ class RegisterController extends Controller
         ]);
 
         auth()->login($user);
+
+        session()->flash('message', 'Regisration successfull');
 
         return redirect('/posts');
 

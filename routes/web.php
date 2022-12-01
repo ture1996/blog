@@ -26,7 +26,7 @@ Route::get('/', function () {
 
 
 Route::get('/posts', [PostsController::class, 'index']);
-    
+
 Route::get('posts/create', [PostsController::class, 'create']);
 
 Route::post('/posts', [PostsController::class, 'store']);
@@ -40,6 +40,8 @@ Route::get('/register', [RegisterController::class, 'create']);
 Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/tags/{tag}/posts', [TagsController::class, 'show']);
+
+Route::get('/posts/tags/{tag}', [TagsController::class, 'index'])->name('posts-by-tag');
 
 Route::get('/logout', [LoginController::class, 'destroy']);
 

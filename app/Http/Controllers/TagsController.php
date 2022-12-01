@@ -12,4 +12,16 @@ class TagsController extends Controller
 
         return view('posts.index', compact('posts'));
     }
+
+
+    public function index(string $tagName){
+        $posts = Tag::where('name', $tagName)
+                    ->first()
+                    ->posts()
+                    ->with('user')
+                    ->latest()
+                    ->paginate(10);
+
+        return view('posts.index', compact('posts'));
+    }
 }
